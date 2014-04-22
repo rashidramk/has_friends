@@ -22,7 +22,7 @@ module Has
         return nil, Friendship::STATUS_FRIEND_IS_REQUIRED unless friend
         
         # should not create friendship if user is trying to add himself
-        return nil, Friendship::STATUS_IS_YOU if is?(friend)
+        return nil, Friendship::STATUS_IS_YOU if is_f?(friend)
         
         # should not create friendship if users are already friends
         return nil, Friendship::STATUS_ALREADY_FRIENDS if friends?(friend)
@@ -70,7 +70,7 @@ module Has
         friendships.first :conditions => {:friend_id => friend.id}
       end
       
-      def is?(friend)
+      def is_f?(friend)
         self.id == friend.id
       end
       
